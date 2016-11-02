@@ -1,17 +1,22 @@
 class RoomsController < ApplicationController
 
   def create
-  	@room = Room.new(room_params)
-  	if @room.save
-  		redirect_to root_path
-  	else
-  		redirect_to root_path
-  	end
+    @room = Room.new(room_params)
+    if @room.save
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
   end
 
-	private
-	def room_params
-		params.require(:room).permit(:name)
-	end
+  def show
+    @room = Room.find(params[:id])
+    redirect_to room_messages_path(@room)
+  end
+
+  private
+  def room_params
+    params.require(:room).permit(:name)
+  end
 
 end

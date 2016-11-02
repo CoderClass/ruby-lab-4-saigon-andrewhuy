@@ -1,0 +1,8 @@
+<h1>Room <%= @room.name %></h1>
+<h1>Message Page</h1>
+<ul>
+  <%= render partial: "message", collection: @messages %>
+</ul>
+<hr>
+<%= form_for [@room, Message.new] do |f| %>
+<% end %>
